@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- for custom new -->
+    <title>Contact Details Card</title>   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+
+  <body>
+    </div>
+
+    <div id="particles-js"></div>
+    <div class="container">
+      <form action="#">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" class="back-button" onclick="goToCustom()">Back</button>
+
+        </div>
+      </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+    // Get the current itinerary details from localStorage
+const currentItineraryDetails = JSON.parse(localStorage.getItem('currentItineraryDetails'));
+
+// Log the details to the console
+console.log(currentItineraryDetails);
+const submitButton = document.querySelector('.submit-button');
+submitButton.addEventListener('click', handleSubmit);
+
+
+function handleSubmit(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the form values
+  const name = document.querySelector('#name').value;
+  const phone = document.querySelector('#phone').value;
+  const email = document.querySelector('#email').value;
+
+  // Store the form details in localStorage
+  localStorage.setItem('formDetails', JSON.stringify({
+    name: name,
+    phone: phone,
+    email: email
+  }));
+
+  // Redirect to the quotes.html page
+  window.location.href = 'quotes.html';
+}
+
+
+
+  particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('particles.js loaded');
+  });
+
+  function goToCustom() {
+  // Get the current itinerary details from localStorage
+  const currentItineraryDetails = JSON.parse(localStorage.getItem('currentItineraryDetails'));
+
+  // Store the itinerary details in localStorage
+  localStorage.setItem('currentItineraryDetails', JSON.stringify(currentItineraryDetails));
+
+  // Redirect to the custom.html page
+  window.location.href = 'custom.html';
+}
+
+    </script>
+    
+ 
+  </body>
+</html>

@@ -1,0 +1,734 @@
+<style>
+  .card {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  fieldset label {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  fieldset {
+    border: none;
+    margin-top: 20px;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .option-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-basis: calc(33.33% - 20px);
+    margin-right: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+  }
+
+  
+  .option-card:last-child {
+    margin-right: 0;
+  }
+  
+  .option-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .option-card.selected {
+    border: 2px solid #4CAF50;
+  }
+  
+  .option-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+
+  }
+  
+  
+  .option-card img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .option-info {
+    text-align: center;
+  }
+  
+  .option-card .option-info {
+    display: none;
+  }
+  
+  .option-card.selected .option-info {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .updated-amount {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+  
+
+  #total-cost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.itinerary-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 9999;
+  }
+
+  .itinerary-container h2 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+
+  .itinerary-container p {
+    font-size: 14px;
+    margin: 0;
+  }
+  .option-card:hover .option-info {
+  display: block;
+}
+.option-info {
+  display: none;
+}
+#back-button, #next-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  position: fixed;
+  bottom: 20px;
+  width: 150px;
+}
+
+#back-button {
+  left: 20px;
+}
+
+#next-button {
+  right: 20px;
+}
+
+  </style>
+
+  <div class="card" style="text-align: center;">
+    <h2>Build Your Own Package</h2>
+    <form>
+  
+      <fieldset>
+        <label for="material">Select Your Material:</label>
+
+        <div class="option-card">
+          <input type="radio" id="option1" name="option" value="option1" required>
+          <label for="option1">
+            <h3>HDFHMR Material</h3>
+            <h4>Has high strength and density, and a solid screw-holding capacity.            </h4>
+            <div class="option-info">
+              <img src="HDR Material.png" alt="Option 1">
+              <p>Pro Tip: Makes for a good choice as it has load-bearing capacity at a lower cost.</p>
+              <p>Cost: ₹50</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="radio" id="option2" name="option" value="option2">
+          <label for="option2">
+            <h3>MDF Material</h3>
+            <h4>Is seamless, free of knots, and has high resistance for wear & tear.</h4>
+            <div class="option-info">
+              <img src="MDF Material.jpg" alt="Option 2">
+              <p>Pro Tip: Ideal for cabinets because of their smooth, seamless surface.</p>
+              <p>Cost: ₹75</p>
+            </div>
+          </label>
+        </div>
+
+        <div class="option-card">
+          <input type="radio" id="option3" name="option" value="option3">
+          <label for="option3">
+            <h3>MR Plywood Material</h3>
+            <h4>is moisture and termite resistant and does not wear off easily.</h4>
+            <div class="option-info">
+              <img src="MR Plywood Material.jpg" alt="Option 3">
+              <p>Pro Tip:  Works well if you're on a budget and looking for a durable material.</p>
+              <p>Cost: ₹100</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="radio" id="option4" name="option" value="option4">
+          <label for="option4">
+            <h3>BWR Plywood Material</h3>
+            <h4>Is water resistant and works well in areas prone to water exposure.</h4>
+            <div class="option-info">
+              <img src="BWR Plywood material.jpg" alt="Option 4">
+              <p>Pro Tip: Pick this if you don’t want to be worried about frequent exposure to water.</p>
+              <p>Cost: ₹150</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="radio" id="option5" name="option" value="option5">
+          <label for="option5">
+            <h3>BWP Plywood Material</h3>
+            <h4>Is waterproof and withstands prolonged exposure to water and moisture.</h4>
+            <div class="option-info">
+              <img src="BWP Plywood Material.jpg" alt="Option 5">
+              <p>Pro Tip: Looking for a waterproof material? Then consider this one!</p>
+              <p>Cost: ₹200</p>
+            </div>
+          </label>
+        </div>
+
+       
+          <label for="granite">Select Your Granite Option:</label>
+
+          <div class="option-card">
+            <input type="radio" id="optio1" name="granite" value="yes" required>
+            <label for="optio1">
+              <h3>Yes(Granite)</h3>
+              <h4>Add granite to your package.</h4>
+              <div class="option-info">
+                <p>Cost:₹100</p>
+              </div>
+            </label>
+          </div>
+          
+
+  <div class="option-card">
+    <input type="radio" id="optio2" name="granite" value="no">
+    <label for="optio2">
+      <h3>No(Granite)</h3>
+      <h4>Do not add granite to your package.</h4>
+      <div class="option-info">
+        <p>Cost: ₹0</p>
+      </div>
+    </label>
+  </div>
+          
+        
+  
+         
+          <label for="finish">Pick a finish for base & wall cabinets:</label>
+
+          <div class="option-card">
+            <input type="radio" id="opti1" name="base" value="option1" required>
+            <label for="opti1">
+              <h3>Matte Laminate finish</h3>
+              <h4>Is a smooth, durable finish which gives a clean and rich look.</h4>
+              <div class="option-info">
+                <img src="Matte Laminate.png" alt="Option 1">
+                <p>Pro Tip: Going for that muted, smooth look for your kitchen? This one’s for you.</p>
+                <p>Cost: ₹50</p>
+              </div>
+            </label>
+          </div>
+          <div class="option-card">
+            <input type="radio" id="opti2" name="base" value="option2">
+            <label for="opti2">
+              <h3>HGL Laminate finish</h3>
+              <h4>Is glossy with solid colours that uplifts a space with its shiny finish.</h4>
+              <div class="option-info">
+                <img src="HGL Laminate.png" alt="Option 2">
+                <p>Pro Tip: Always wanted magazine-like glossy kitchen cabinets? Choose this!</p>
+                <p>Cost: ₹75</p>
+              </div>
+            </label>
+          </div>
+    
+          
+  <div class="option-card">
+    <input type="radio" id="opti3" name="base" value="option3">
+    <label for="opti3">
+      <h3>Matte Membrane finish</h3>
+      <h4>Comes with a smooth surface and has better grooving ability.</h4>
+      <div class="option-info">
+        <img src="Matte Laminate.png" alt="Option 3">
+        <p>Pro Tip: Go for this if you want a seamless finish that sits well in any kind of kitchen.</p>
+        <p>Cost: ₹100</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="opti4" name="base" value="option4">
+    <label for="opti4">
+      <h3>HGL Membrane finish</h3>
+      <h4>Has a lustrous surface that enhances your modular kitchen.              </h4>
+      <div class="option-info">
+        <img src="HGL Membrane.png" alt="Option 4">
+        <p>Pro Tip: Want those strong, shiny cabinets with a pop of colour? Consider this!</p>
+        <p>Cost:₹150</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="opti5" name="base" value="option5">
+    <label for="opti5">
+      <h3>Anti-scratch Acrylic finish</h3>
+      <h4>Is an elegant, reflective, glossy finish that is scratch resistant.</h4>
+      <div class="option-info">
+        <img src="Anti Scratch Acrylic.png" alt="Option 5">
+        <p>Pro Tip: Dreaming of a chic kitchen with a touch of luxury? Go for this one.</p>
+        <p>Cost: ₹200</p>
+      </div>
+    </label>
+  </div>
+
+
+
+         
+
+  <label for="services">Services:</label>
+
+  <div class="option-card">
+    <input type="checkbox" id="opt1" name="service" value="option1" required>
+    <label for="opt1">
+      <h3>Painting Service</h3>
+      <div class="option-info">
+        <img src="Painting Service.png" alt="Option 1">
+        <p>Cost: ₹10</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="checkbox" id="opt2" name="service" value="option2">
+    <label for="opt2">
+      <h3>Plumbing Service</h3>
+      <div class="option-info">
+        <img src="Plumbing Service.png" alt="Option 2">
+        <p>Cost:₹10</p>
+      </div>
+    </label>
+  </div>
+
+ 
+  <div class="option-card">
+    <input type="checkbox" id="opt3" name="service" value="option3">
+    <label for="opt3">
+      <h3>Electrical Service</h3>
+      <div class="option-info">
+        <img src="Electrical Service.png" alt="Option 3">
+        <p>Cost:₹10</p>
+      </div>
+    </label>
+  </div>
+  
+  <div class="option-card">
+    <input type="checkbox" id="opt4" name="service" value="option4">
+    <label for="opt4">
+      <h3>Platform Service</h3>
+      <div class="option-info">
+        <img src="Platform Service.png" alt="Option 4">
+        <p>Cost: ₹10</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="checkbox" id="opt5" name="service" value="option5">
+    <label for="opt5">
+      <h3>Dado Service</h3>
+      <div class="option-info">
+        <img src="Dado Service.png" alt="Option 5">
+        <p>Cost: ₹10</p>
+      </div>
+    </label>
+  </div>
+
+
+ 
+  <label for="appliances">Appliances:</label>
+
+  <div class="option-card">
+    <input type="checkbox" id="op1" name="app" value="option1" required>
+    <label for="op1">
+      <h3>HOB</h3>
+      <div class="option-info">
+        <img src="Hob appliance.png" alt="Option 1">
+        <p>Cost: ₹10</p>
+      </div>
+    </label>
+  </div>
+  
+  
+<div class="option-card">
+  <input type="checkbox" id="op2" name="app" value="option2">
+  <label for="op2">
+    <h3>Chimney</h3>
+    <div class="option-info">
+      <img src="Chimney Appliance.png" alt="Option 2">
+      <p>Cost:₹10</p>
+    </div>
+  </label>
+</div>
+
+
+<div class="option-card">
+  <input type="checkbox" id="op3" name="app" value="option3">
+  <label for="op3">
+    <h3>Faucets & Sink</h3>
+    <div class="option-info">
+      <img src="Faucets & sink Appliance.png" alt="Option 3">
+      <p>Cost:₹10</p>
+    </div>
+  </label>
+</div>
+
+<div class="option-card">
+  <input type="checkbox" id="op4" name="app" value="option4">
+  <label for="op4">
+    <h3>Built-in Microwave</h3>
+    <div class="option-info">
+      <img src="Built in Microwave Appliance.png" alt="Option 4">
+      <p>Cost: ₹10</p>
+    </div>
+  </label>
+</div>
+<div class="option-card">
+  <input type="checkbox" id="op5" name="app" value="option5">
+  <label for="op5">
+    <h3>Built-in Oven</h3>
+    <div class="option-info">
+      <img src="Built in Oven Appliance.png" alt="Option 5">
+      <p>Cost: ₹10</p>
+    </div>
+  </label>
+</div>
+        
+<div class="option-card">
+  <input type="checkbox" id="option6" name="app" value="option6">
+  <label for="option6">
+    <h3>Refrigerator</h3>
+    <div class="option-info">
+      <img src="Refrigerator Appliance.png" alt="Option 6">
+      <p>Cost: ₹10</p>
+    </div>
+  </label>
+</div>
+
+
+  
+
+    
+
+      <label for="accessories">Accessories:</label>
+
+      <div class="option-card">
+        <input type="radio" id="o1" name="acce" value="option1" required>
+        <label for="o1">
+          <h3>Basic Accessories</h3>
+          <h4>A basic range of accessories usually required to get your ideal kitchen started.</h4>
+          <div class="option-info">
+            <img src="Basic Accessories.png" alt="Option 1">
+            <p>Pro Tip: Consider this if you need basic units within a budget for a comfortable cooking experience.</p>
+            <p>Cost: ₹50</p>
+          </div>
+        </label>
+      </div>
+      <div class="option-card">
+        <input type="radio" id="o2" name="acce" value="option2">
+        <label for="o2">
+          <h3>Intermediate Accessories</h3>
+          <h4>A fine range of fittings, cabinets, and more for a smooth culinary experience.</h4>
+          <div class="option-info">
+            <img src="Intermediate Accessories.png" alt="Option 2">
+            <p>Pro Tip: Pick this if you experiment with cooking and need more units to ease your time in the kitchen.</p>
+            <p>Cost: ₹75</p>
+          </div>
+        </label>
+      </div>
+
+     
+
+      <div class="option-card">
+        <input type="radio" id="o3" name="acce" value="option3">
+        <label for="o3">
+          <h3>Premium Assessories</h3>
+          <h4>A showstopper kitchen with an exclusive range you were always looking for.</h4>
+          <div class="option-info">
+            <img src="Premium Accessories.png" alt="Option 3">
+            <p>Pro Tip: If you're a passionate cook who needs an exclusive range of accessories, this one's for you.</p>
+            <p>Cost: ₹100</p>
+          </div>
+        </label>
+      </div>
+     
+  </fieldset>
+
+
+    </form>
+  </div>
+  <div class="button-container">
+    <button id="back-button">Back</button>
+    <button id="next-button">Next</button>
+
+</div>
+
+<div class="itinerary-container">
+  <h2>Your Selection</h2>
+  <p id="selected-option"></p>
+  <ul id="itinerary"></ul>
+  <p> <span id="surface-area">surface area: </span></p>
+  <p><span id="Final-cost">Final cost: ₹0</span></p>
+
+</div>
+<p><span id="total-cost">Total cost: ₹0</span></p>
+
+
+
+
+<script>
+
+
+  const selectedOption = localStorage.getItem("selectedOption");
+  
+  const surfaceArea = parseInt(localStorage.getItem("surfaceArea").match(/\d+/)[0], 10);
+  
+  document.getElementById("selected-option").textContent = selectedOption;
+  document.getElementById("surface-area").textContent = surfaceArea;
+  document.getElementById("surface-area").textContent = `Total surface area: ${surfaceArea} sq ft`;
+
+  const optionCards = document.querySelectorAll('.option-card');
+  const inputs = document.querySelectorAll('input[type=radio], input[type=checkbox]');
+  const totalCostElement = document.getElementById('total-cost');
+  const finalCostElement = document.getElementById('Final-cost');
+  
+
+ 
+
+  function deselectAll() {
+    optionCards.forEach((optionCard) => {
+      optionCard.classList.remove('selected');
+    });
+  }
+
+  function updateTotalCost() {
+    let totalCost = 0;
+
+    inputs.forEach((input) => {
+      if (input.checked) {
+        const optionCard = input.closest('.option-card');
+        const costElement = optionCard.querySelector('.option-info p:last-of-type');
+        const cost = Number(costElement.textContent.replace(/[^0-9.-]+/g,""));
+
+        totalCost += cost;
+      }
+    });
+
+    return totalCost;
+  }
+  
+  function updateCost() {
+    let totalCost = updateTotalCost();
+    totalCostElement.textContent = `Total cost: ₹${totalCost}`;
+    
+  }
+  
+  updateCost();
+  
+  inputs.forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const selectedOptionCard = event.target.closest('.option-card');
+      deselectAll();
+      selectedOptionCard.classList.add('selected');
+      updateCost();
+      finalCostElement.textContent = `Final cost: ₹${updateTotalCost() * surfaceArea}`;
+      // storeSelectedOptions();
+      updateItinerary();
+
+
+    });
+  });
+  const materialRadios = document.querySelectorAll('input[name="option"]');
+const graniteRadios = document.querySelectorAll('input[name="granite"]');
+const finishRadios = document.querySelectorAll('input[name="base"]');
+const servicesCheck = document.querySelectorAll('input[name="service"]');
+const appliancesCheck = document.querySelectorAll('input[name="app"]');
+const accessoriesRadios = document.querySelectorAll('input[name="acce"]');
+
+materialRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+
+graniteRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+finishRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+servicesCheck.forEach((checkbox) => {
+  checkbox.addEventListener("change", updateItinerary);
+});
+appliancesCheck.forEach((checkbox) => {
+  checkbox.addEventListener("change", updateItinerary);
+});
+accessoriesRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+function updateItinerary() {
+  const selectedMaterial = document.querySelector('input[name="option"]:checked');
+  const selectedGranite = document.querySelector('input[name="granite"]:checked');
+  const selectedFinish = document.querySelector('input[name="base"]:checked');
+  const selectedServices = document.querySelectorAll('input[name="service"]:checked');
+  const selectedAppliances = document.querySelectorAll('input[name="app"]:checked');
+  const selectedAccessories = document.querySelector('input[name="acce"]:checked');
+
+  const itinerary = document.querySelector("#itinerary");
+  itinerary.innerHTML = "";
+
+
+  if (selectedMaterial) {
+    const materialName = selectedMaterial.nextElementSibling.querySelector("h3").textContent;
+    const materialCost = selectedMaterial.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const materialItem = document.createElement("li");
+    materialItem.textContent = `${materialName} - ${materialCost}`;
+    itinerary.appendChild(materialItem);
+  }
+
+  if (selectedGranite) {
+    const graniteName = selectedGranite.nextElementSibling.querySelector("h3").textContent;
+    const graniteCost = selectedGranite.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const graniteItem = document.createElement("li");
+    graniteItem.textContent = `${graniteName} - ${graniteCost}`;
+    itinerary.appendChild(graniteItem);
+  }
+  if (selectedFinish) {
+    const finishName = selectedFinish.nextElementSibling.querySelector("h3").textContent;
+    const finishCost = selectedFinish.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const finishItem = document.createElement("li");
+    finishItem.textContent = `${finishName} - ${finishCost}`;
+    itinerary.appendChild(finishItem);
+  }
+  if (selectedServices.length > 0) {
+
+ 
+  selectedServices.forEach((checkbox) => {
+    const serviceName = checkbox.nextElementSibling.querySelector("h3").textContent;
+    const serviceCost = checkbox.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const serviceItem = document.createElement("li");
+    serviceItem.textContent = `${serviceName} - ${serviceCost}`;
+    itinerary.appendChild(serviceItem);
+  });
+}
+  
+  if (selectedAppliances.length>0) {
+   
+    selectedAppliances.forEach((checkbox) => {
+    const appName = checkbox.nextElementSibling.querySelector("h3").textContent;
+    const appCost = checkbox.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const appItem = document.createElement("li");
+    appItem.textContent = `${appName} - ${appCost}`;
+    itinerary.appendChild(appItem);
+  });
+  }
+  if (selectedAccessories) {
+    const acceName = selectedAccessories.nextElementSibling.querySelector("h3").textContent;
+    const acceCost = selectedAccessories.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const acceItem = document.createElement("li");
+    acceItem.textContent = `${acceName} - ${acceCost}`;
+    itinerary.appendChild(acceItem);
+  }
+
+
+  // if (!selectedMaterial && !selectedGranite && !selectedFinish && !selectedServices && !selectedAppliances && !selectedAccessories) {
+    if (!selectedMaterial && !selectedGranite && !selectedFinish && selectedServices.length === 0 && selectedAppliances.length === 0 && !selectedAccessories) {
+
+    const noSelectionItem = document.createElement("li");
+    noSelectionItem.textContent = "No selections made";
+    itinerary.appendChild(noSelectionItem);
+  }
+
+}
+
+
+var backButton = document.getElementById("back-button");
+         backButton.addEventListener("click", function() {
+   window.location.href = "package.html";
+   
+
+ });
+
+ 
+ const nextButton = document.getElementById('next-button');
+
+nextButton.addEventListener('click', () => {
+  // Get the itinerary container
+  const itineraryContainer = document.querySelector('.itinerary-container');
+
+  // Get the selected option
+  const selectedOption = document.getElementById('selected-option').textContent;
+
+  // Get the itinerary list
+  const itineraryList = document.getElementById('itinerary').innerHTML;
+
+  // Get the surface area
+  const surfaceArea = document.getElementById('surface-area').textContent;
+
+  // Get the final cost
+  const finalCost = document.getElementById('Final-cost').textContent;
+
+  // Get the total cost
+  const totalCost = document.getElementById('total-cost').textContent;
+
+  // Store the current itinerary details in localStorage
+  localStorage.setItem('currentItineraryDetails', JSON.stringify({
+    selectedOption: selectedOption,
+    itineraryList: itineraryList,
+    surfaceArea: surfaceArea,
+    finalCost: finalCost,
+    totalCost: totalCost
+  }));
+
+  // Redirect to the new.html page
+  window.location.href = 'news.html';
+});
+
+
+
+
+
+
+</script>
+
+

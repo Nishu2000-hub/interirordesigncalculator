@@ -1,0 +1,602 @@
+   <style>
+    .card {
+      background-color: #f2f2f2;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      padding: 20px;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    fieldset label {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    fieldset {
+      border: none;
+      margin-top: 20px;
+      text-align: center;
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .option-card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+      flex-basis: calc(33.33% - 20px);
+      margin-right: 20px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+    }
+  
+    
+    .option-card:last-child {
+      margin-right: 0;
+    }
+    
+    .option-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .option-card.selected {
+      border: 2px solid #4CAF50;
+    }
+    
+    .option-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      text-align: center;
+  
+    }
+    
+    
+    .option-card img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .option-info {
+      text-align: center;
+    }
+    
+    .option-card .option-info {
+      display: none;
+    }
+    
+    .option-card.selected .option-info {
+      display: block;
+      margin-top: 10px;
+    }
+    
+    .updated-amount {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+    
+  
+    #total-cost {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .itinerary-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #f8f8f8;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      padding: 10px;
+      z-index: 9999;
+    }
+  
+    .itinerary-container h2 {
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+  
+    .itinerary-container p {
+      font-size: 14px;
+      margin: 0;
+    }
+    .option-card:hover .option-info {
+    display: block;
+  }
+  .option-info {
+    display: none;
+  }
+  #back-button, #next-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position: fixed;
+    bottom: 20px;
+    width: 150px;
+  }
+  
+  #back-button {
+    left: 20px;
+  }
+  
+  #next-button {
+    right: 20px;
+  }
+  
+    </style>
+    <div class="card" style="text-align: center;">
+      <h2>Wardrobe Modular</h2>
+      <form>
+    
+        <fieldset>
+          <label for="material">Select Your Preferred Core Material:</label>
+  
+          <div class="option-card">
+            <input type="radio" id="option1" name="option" value="option1" required>
+            <label for="option1">
+              <h3>MDF Material</h3>
+              <h4>Seamless, free of knots, and has high resistance to wear & tear.          </h4>
+              <div class="option-info">
+                <img src="MDF Material.jpg" alt="Option 1">
+                <p>Pro Tip: An ideal choice for the cabinets owing to its smooth surface.</p>
+                <p>Cost: ₹50</p>
+              </div>
+            </label>
+          </div>
+          
+          <div class="option-card">
+            <input type="radio" id="option2" name="option" value="option2">
+            <label for="option2">
+              <h3>HDF/HMR</h3>
+              <h4>Sturdy and highly dense along with a solid screw-holding capacity.</h4>
+              <div class="option-info">
+                <img src="HDFHMR Material.jpg" alt="Option 2">
+                <p>Pro Tip: A good option that comes with a high load-bearing capacity.</p>
+                <p>Cost: ₹75</p>
+              </div>
+            </label>
+          </div>
+    
+         
+        <label for="accessories">Add your preferred accessories:</label>
+  
+        <div class="option-card">
+          <input type="checkbox" id="optio1" name="acce" value="option1" required>
+          <label for="optio1">
+            <h3>Loft</h3>
+            <div class="option-info">
+              <img src="Loft.jpeg" alt="Option 1">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        
+        <div class="option-card">
+          <input type="checkbox" id="optio2" name="acce" value="option2">
+          <label for="optio2">
+            <h3>Single full-size drawer</h3>
+            <div class="option-info">
+              <img src="Single Full Size Drawer.jpg" alt="Option 2">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+  
+       
+        <div class="option-card">
+          <input type="checkbox" id="optio3" name="acce" value="option3">
+          <label for="optio3">
+            <h3>1 half-drawer</h3>
+            <div class="option-info">
+              <img src="1 Half Drawer.jpg" alt="Option 3">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        
+        <div class="option-card">
+          <input type="checkbox" id="optio4" name="acce" value="option4">
+          <label for="optio4">
+            <h3>2 half-drawers</h3>
+            <div class="option-info">
+              <img src="2 Halves Drawer.jpg" alt="Option 4">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+        <div class="option-card">
+          <input type="checkbox" id="optio5" name="acce" value="option5">
+          <label for="optio5">
+            <h3>Wicker pull out</h3>
+            <div class="option-info">
+              <img src="Wicker Pull Out.jpg" alt="Option 5">
+              <p>Cost: ₹10</p>
+            </div>
+          </label>
+        </div>
+            
+          
+    
+            <label for="heights">What is the Height of your Wardrobe?:</label>
+  
+            <div class="option-card">
+              <input type="radio" id="opti1" name="height" value="option1" required>
+              <label for="opti1">
+                <h3>4ft</h3>
+                <h4>4ft wardrobe height</h4>
+                <div class="option-info">
+                  <p>Cost:₹5</p>
+                </div>
+              </label>
+            </div>
+            
+            
+   <div class="option-card">
+    <input type="radio" id="opti2" name="height" value="option2">
+    <label for="opti2">
+      <h3>6ft</h3>
+      <h4>6ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹10</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="opti3" name="height" value="option3">
+    <label for="opti3">
+      <h3>7ft</h3>
+      <h4>7ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹15</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="opti4" name="height" value="option4">
+    <label for="opti4">
+      <h3>9ft</h3>
+      <h4>9ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹20</p>
+      </div>
+    </label>
+  </div>
+  <div class="option-card">
+    <input type="radio" id="opti5" name="height" value="option5">
+    <label for="opti5">
+      <h3>10ft</h3>
+      <h4>10ft wardrobe height</h4>
+      <div class="option-info">
+        <p>Cost:₹22</p>
+      </div>
+    </label>
+  </div>
+ 
+  
+           
+            <label for="finish">Select your preferred finish:</label>
+  
+            <div class="option-card">
+              <input type="radio" id="opt1" name="base" value="option1" required>
+              <label for="opt1">
+                <h3>Standard - Laminate</h3>
+                <div class="option-info">
+                  <img src="Standard Laminate.jpg" alt="Option 1">
+                  <p>Pro Tip: Looking for a seamless finish that sits well with every interior? This one's for you.</p>
+                  <p>Cost: ₹50</p>
+                </div>
+              </label>
+            </div>
+            
+            <div class="option-card">
+              <input type="radio" id="opt2" name="base" value="option2">
+              <label for="opt2">
+                <h3>Premium - Membrane</h3>
+                <div class="option-info">
+                  <img src="Premium Membrane.jpg" alt="Option 2">
+                  <p>Pro Tip: Get a magazine-like look that requires low maintenance.</p>
+                  <p>Cost: ₹75</p>
+                </div>
+              </label>
+            </div>
+      
+            
+    <div class="option-card">
+      <input type="radio" id="opt3" name="base" value="option3">
+      <label for="opt3">
+        <h3>Luxe - Acrylic</h3>
+        <div class="option-info">
+          <img src="Luxe Acrylic.jpg" alt="Option 3">
+          <p>Pro Tip:Adds a touch of luxury to your modular wardrobe.</p>
+          <p>Cost: ₹100</p>
+        </div>
+      </label>
+    </div>
+    
+            
+       
+  
+  
+    
+  
+  
+        
+    </fieldset>
+  
+  
+      </form>
+    </div>
+    <div class="button-container">
+      <button id="back-button">Back</button>
+      <button id="next-button">Next</button>
+  </div>
+    <!-- <p><span id="total-cost">₹0</span></p> -->
+    <h1 class="updated-amount"><span id="updatedAmount"></span></h1>
+    <div class="itinerary-container">
+      <h2>Your Selection</h2>
+      <!-- <p id="selected-option"></p> -->
+      <ul id="itinerary"></ul>
+      <!-- <p> <span id="surface-area">surface area: </span></p> -->
+      <p><span id="total-cost">Total cost: ₹0</span></p>
+
+    </div>
+    
+   <script>
+    
+    const optionCards = document.querySelectorAll('.option-card');
+  const inputs = document.querySelectorAll('input[type=radio], input[type=checkbox]');
+  const totalCostElement = document.getElementById('total-cost');
+
+  
+  
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var updatedAmount = urlParams.get('amount');
+  
+  document.getElementById("updatedAmount").innerHTML = updatedAmount;
+  
+  // Store the selected options in localStorage
+  function storeSelectedOptions() {
+    const selectedOptions = [];
+  
+    inputs.forEach((input) => {
+      if (input.checked) {
+        const optionCard = input.closest('.option-card');
+        const optionTitle = optionCard.querySelector('h3').textContent;
+  
+        selectedOptions.push(optionTitle);
+  
+      }
+    });
+  
+    localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
+  }
+  
+  function deselectAll() {
+    optionCards.forEach((optionCard) => {
+      optionCard.classList.remove('selected');
+    });
+  }
+  
+  function updateTotalCost() {
+    let totalCost = 0;
+  
+    inputs.forEach((input) => {
+      if (input.checked) {
+        const optionCard = input.closest('.option-card');
+        const costElement = optionCard.querySelector('.option-info p:last-of-type');
+        const cost = Number(costElement.textContent.replace(/[^0-9.-]+/g,""));
+  
+        totalCost += cost;
+      }
+    });
+  
+    return totalCost;
+  }
+  
+  function calculateUpdatedTotal() {
+    const totalCost = updateTotalCost();
+    const parsedAmount = parseInt(updatedAmount, 10);
+    const updatedTotal = isNaN(parsedAmount) ? totalCost : parsedAmount + totalCost;
+    return updatedTotal;
+  }
+  
+  function storeUpdatedTotal() {
+    const updatedTotal = calculateUpdatedTotal();
+    localStorage.setItem('updatedTotal', updatedTotal);
+  }
+  
+  function redirectToQuote() {
+    const updatedTotal = calculateUpdatedTotal();
+    localStorage.setItem('updatedTotal', updatedTotal);
+    storeSelectedOptions(); // call storeSelectedOptions function
+    window.location.href = "quotess.html";
+  }
+  
+  inputs.forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const selectedOptionCard = event.target.closest('.option-card');
+      deselectAll();
+      selectedOptionCard.classList.add('selected');
+      totalCostElement.textContent = ` ₹${updateTotalCost()}`;
+      // storeSelectedOptions(); // call storeSelectedOptions function
+      updateItinerary();
+
+    });
+  });
+  
+
+
+  const materialRadios = document.querySelectorAll('input[name="option"]');
+const heightRadios = document.querySelectorAll('input[name="height"]');
+const finishRadios = document.querySelectorAll('input[name="base"]');
+// const servicesCheck = document.querySelectorAll('input[name="service"]');
+const appliancesCheck = document.querySelectorAll('input[name="acce"]');
+// const accessoriesRadios = document.querySelectorAll('input[name="acce"]');
+
+materialRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+
+heightRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+finishRadios.forEach((radio) => {
+  radio.addEventListener("change", updateItinerary);
+});
+// servicesCheck.forEach((checkbox) => {
+//   checkbox.addEventListener("change", updateItinerary);
+// });
+appliancesCheck.forEach((checkbox) => {
+  checkbox.addEventListener("change", updateItinerary);
+});
+// accessoriesRadios.forEach((radio) => {
+//   radio.addEventListener("change", updateItinerary);
+// });
+function updateItinerary() {
+  const selectedMaterial = document.querySelector('input[name="option"]:checked');
+  const selectedHeight = document.querySelector('input[name="height"]:checked');
+  const selectedFinish = document.querySelector('input[name="base"]:checked');
+  // const selectedServices = document.querySelectorAll('input[name="service"]:checked');
+  const selectedAppliances = document.querySelectorAll('input[name="acce"]:checked');
+  // const selectedAccessories = document.querySelector('input[name="acce"]:checked');
+
+  const itinerary = document.querySelector("#itinerary");
+  itinerary.innerHTML = "";
+
+
+  if (selectedMaterial) {
+    const materialName = selectedMaterial.nextElementSibling.querySelector("h3").textContent;
+    const materialCost = selectedMaterial.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const materialItem = document.createElement("li");
+    materialItem.textContent = `${materialName} - ${materialCost}`;
+    itinerary.appendChild(materialItem);
+  }
+
+  if (selectedHeight) {
+    const heightName = selectedHeight.nextElementSibling.querySelector("h3").textContent;
+    const heightCost = selectedHeight.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const heightItem = document.createElement("li");
+    heightItem.textContent = `${heightName} - ${heightCost}`;
+    itinerary.appendChild(heightItem);
+  }
+  if (selectedFinish) {
+    const finishName = selectedFinish.nextElementSibling.querySelector("h3").textContent;
+    const finishCost = selectedFinish.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const finishItem = document.createElement("li");
+    finishItem.textContent = `${finishName} - ${finishCost}`;
+    itinerary.appendChild(finishItem);
+  }
+//   if (selectedServices.length > 0) {
+
+ 
+//   selectedServices.forEach((checkbox) => {
+//     const serviceName = checkbox.nextElementSibling.querySelector("h3").textContent;
+//     const serviceCost = checkbox.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+//     const serviceItem = document.createElement("li");
+//     serviceItem.textContent = `${serviceName} - ${serviceCost}`;
+//     itinerary.appendChild(serviceItem);
+//   });
+// }
+  
+  if (selectedAppliances.length>0) {
+   
+    selectedAppliances.forEach((checkbox) => {
+    const appName = checkbox.nextElementSibling.querySelector("h3").textContent;
+    const appCost = checkbox.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+    const appItem = document.createElement("li");
+    appItem.textContent = `${appName} - ${appCost}`;
+    itinerary.appendChild(appItem);
+  });
+  }
+  // if (selectedAccessories) {
+  //   const acceName = selectedAccessories.nextElementSibling.querySelector("h3").textContent;
+  //   const acceCost = selectedAccessories.nextElementSibling.querySelector(".option-info p:last-child").textContent;
+  //   const acceItem = document.createElement("li");
+  //   acceItem.textContent = `${acceName} - ${acceCost}`;
+  //   itinerary.appendChild(acceItem);
+  // }
+
+
+  // if (!selectedMaterial && !selectedGranite && !selectedFinish && !selectedServices && !selectedAppliances && !selectedAccessories) {
+    if (!selectedMaterial && !selectedHeight && !selectedFinish && selectedAppliances.length === 0) {
+
+    const noSelectionItem = document.createElement("li");
+    noSelectionItem.textContent = "No selections made";
+    itinerary.appendChild(noSelectionItem);
+  }
+
+}
+  var backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", function() {
+    window.location.href = "home.html";
+  });
+
+
+
+  
+  const nextButton = document.getElementById('next-button');
+
+nextButton.addEventListener('click', () => {
+  // Get the itinerary container
+  const itineraryContainer = document.querySelector('.itinerary-container');
+
+  // Get the selected option
+  // const selectedOption = document.getElementById('selected-option').textContent;
+
+  // Get the itinerary list
+  const itineraryList = document.getElementById('itinerary').innerHTML;
+
+  // Get the surface area
+  // const surfaceArea = document.getElementById('surface-area').textContent;
+
+  // Get the final cost
+  // const finalCost = document.getElementById('Final-cost').textContent;
+
+  // Get the total cost
+  const totalCost = document.getElementById('total-cost').textContent;
+
+  // Store the current itinerary details in localStorage
+  localStorage.setItem('currentItineraryDetails', JSON.stringify({
+    // selectedOption: selectedOption,
+    itineraryList: itineraryList,
+    // surfaceArea: surfaceArea,
+    // finalCost: finalCost,
+    totalCost: totalCost
+  }));
+
+  // Redirect to the new.html page
+  window.location.href = 'newss.html';
+});
+
+
+  </script>
+  

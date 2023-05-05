@@ -1,0 +1,109 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Details Card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+
+  <body>
+    <div class="itinerary-container">
+      <h2>Your Selection</h2>
+      <ul id="itinerary"></ul>
+
+      <p id="selected-option"></p>
+      <p id="surface-area"></p>
+      <p id="package-cost">Total Cost: ₹0</p>
+    </div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <form action="#">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" class="back-button">Back</button>
+        </div>
+      </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+    
+
+
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+const itineraryString = urlParams.get('itinerary');
+const itineraryData = decodeURIComponent(itineraryString).split('\n');
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevent default form submission behavior
+
+    // get values of input fields
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+
+    // store input values in localStorage
+    localStorage.setItem('name', name);
+    localStorage.setItem('phone', phone);
+    localStorage.setItem('email', email);
+
+    // redirect to quote.html with stored values as query parameters
+    const selectedOption = localStorage.getItem('selectedOption');
+    const surfaceArea = localStorage.getItem('surfaceArea');
+    const totalCost = localStorage.getItem('totalCost');
+    const url = `quote.html?name=${name}&phone=${phone}&email=${email}&selectedOption=${selectedOption}&surfaceArea=${surfaceArea}&totalCost=${totalCost}`;
+    window.location.replace(url);
+  });
+
+  const selectedOption = localStorage.getItem("selectedOption");
+  console.log(selectedOption)
+  const surfaceArea = localStorage.getItem("surfaceArea");
+  console.log(surfaceArea)
+  const totalCost = localStorage.getItem("totalCost");
+  console.log(totalCost)
+
+  // Set the retrieved values in the itinerary container
+  document.getElementById("selected-option").textContent = selectedOption;
+  document.getElementById("surface-area").textContent = surfaceArea;
+  document.getElementById("package-cost").textContent = "Total Cost: ₹" + totalCost;
+
+  particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('particles.js loaded');
+
+
+    
+  });
+
+  const backButton = document.querySelector('.back-button');
+backButton.addEventListener('click', () => {
+  // Get the itinerary data from localStorage
+  const itineraryData = localStorage.getItem('itineraryData');
+  // Set the itinerary data as the value of the itinerary list
+  document.getElementById('itinerary').value = itineraryData;
+  // Redirect to the package.html page
+  window.location.href = 'package.html';
+});
+
+    </script>
+    
+ 
+  </body>
+</html>
